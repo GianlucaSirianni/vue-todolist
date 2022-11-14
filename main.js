@@ -32,9 +32,19 @@ var app = new Vue(
                 this.task.splice(index, 1);
             },
 
-            completed(element, index){
-                this.completedTask.push(element);
-                this.task.splice(index, 1);
+            completedOrNot(element, index){
+                if (element.done == false){
+                    this.completedTask.push(element);
+                    this.task.splice(index, 1);
+                    element.done = true;
+                } else if (element.done == true){
+                    this.task.push(element);
+                    this.completedTask.splice(index, 1);
+                    element.done = false;
+                }
+
+
+                
             }
 
         }
