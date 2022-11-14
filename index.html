@@ -20,7 +20,7 @@
 
         <!--barra di inserimento task-->
         <div class="barContainer d-flex justify-content-center pt-4">
-            <input type="text" placeholder="What do we do today?" v-model="newTask">
+            <input type="text" placeholder="What do we do today?" v-model="newTask" @keyup.enter="addNewTask">
             <button class="btn btn-primary mx-2" @click="addNewTask">Insert Task</button>
         </div>
 
