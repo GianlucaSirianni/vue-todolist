@@ -23,7 +23,9 @@ var app = new Vue(
 
             completedTask: [
 
-            ]
+            ],
+
+            newTask: '',
         },
 
         methods: {
@@ -33,18 +35,31 @@ var app = new Vue(
             },
 
             completedOrNot(element, index){
+                console.log('ciao')
                 if (element.done == false){
+
                     this.completedTask.push(element);
                     this.task.splice(index, 1);
                     element.done = true;
-                } else if (element.done == true){
+
+                } else {
+
                     this.task.push(element);
                     this.completedTask.splice(index, 1);
                     element.done = false;
+
                 }
-
-
                 
+            },
+
+            addNewTask(){
+                if(this.newTask != ''){
+                    let userTask = {
+                        text: this.newTask,
+                        done: false
+                    };
+                    this.task.push(userTask)
+                }
             }
 
         }

@@ -20,31 +20,35 @@
 
         <!--barra di inserimento task-->
         <div class="barContainer d-flex justify-content-center pt-4">
-            <input type="text" placeholder="What do we do today?">
-            <button class="btn btn-primary mx-2">Insert Task</button>
+            <input type="text" placeholder="What do we do today?" v-model="newTask">
+            <button class="btn btn-primary mx-2" @click="addNewTask">Insert Task</button>
         </div>
 
         <!--visualizza tabella task da fare-->
         <div class="container">
             <ul class="list-group list-group-flush">
                 <li v-for="(element, index) in task" :key='index'
-                    class="list-group-item d-flex justify-content-between align-items-center" @click = "completedOrNot(element, index)">
-                    {{element.text}}
+                    class="list-group-item d-flex justify-content-between align-items-center">
+                <!--task-->
+                    <span @click = "completedOrNot(element, index)">{{element.text}}</span>
+                <!--X rossa-->
                     <div class="text-danger" @click="removeElement(element, index)">
                         <i class="fa-solid fa-circle-xmark"></i>
                     </div>
+
                 </li>
             </ul>
         </div>
 
         <!--visualizza tabella task completati-->
         <div class="container completedTaskContainer mt-4 ">
-            <ul class="list-group list-group-flush">
-                <li v-for="(elem, ind) in completedTask" :key='index'
+            <ul class="list-group list-group-flush" v-if="completedTask.length > 0">
+                <li v-for="(element, index) in completedTask" :key='index'
                     class="list-group-item d-flex justify-content-between align-items-center text-decoration-line-through" @click = "completedOrNot(element, index)">
-                    {{elem.text}}
+                    {{element.text}}
                 </li>
             </ul>
+            <h3 v-else>It appears you have nothing to do</h3>
         </div>
     </div>
 
