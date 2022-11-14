@@ -1,4 +1,4 @@
-var app = new VTTCue(
+var app = new Vue(
     {
         el: '#root',
         data: {
@@ -6,7 +6,7 @@ var app = new VTTCue(
         },
 
         methods: {
-            
+
         }
 
     }
